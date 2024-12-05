@@ -1,0 +1,64 @@
+CREATE DATABASE SchoolManagement;
+USE SchoolManagement;
+
+CREATE TABLE Management_Account (
+    AccountID INT PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50),
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    Phone VARCHAR(15),
+    DateOfBirth DATE,
+    Major VARCHAR(100),
+    Status VARCHAR(10) CHECK (Status IN ('Active', 'Inactive')),  -- Sử dụng CHECK thay vì ENUM
+    Password VARCHAR(255) NOT NULL,
+    AccountRole VARCHAR(10) CHECK (AccountRole IN ('Admin', 'Teacher', 'Student'))
+);
+
+CREATE TABLE Management_Subject (
+    SubjectID INT PRIMARY KEY,
+    SubjectName VARCHAR(100) NOT NULL,
+    Major VARCHAR(100)
+);
+
+CREATE TABLE Management_Class (
+    ClassID INT PRIMARY KEY,
+    ClassName VARCHAR(100) NOT NULL,
+    Description TEXT,
+    TeacherID INT,
+    Semester VARCHAR(50),
+    SubjectID INT,
+    Status VARCHAR(10) CHECK (Status IN ('Active', 'Inactive')),
+    FOREIGN KEY (TeacherID) REFERENCES Management_Account(AccountID),
+    FOREIGN KEY (SubjectID) REFERENCES Management_Subject(SubjectID)
+);
+
+CREATE TABLE Management_ClassMembers (
+    ClassMemberID INT PRIMARY KEY,
+    ClassID INT,
+    AccountID INT,
+    JoinDate DATE,
+    Status VARCHAR(10) CHECK (Status IN ('Active', 'Inactive')),
+    FOREIGN KEY (ClassID) REFERENCES Management_Class(ClassID),
+    FOREIGN KEY (AccountID) REFERENCES Management_Account(AccountID)
+);
+
+CREATE TABLE Management_Schedule (
+    ScheduleID INT PRIMARY KEY,
+    ClassID INT,
+    StartTime TIME,
+    EndTime TIME,
+    Room VARCHAR(50),
+    Date DATE,
+    Note TEXT,
+    FOREIGN KEY (ClassID) REFERENCES Management_Class(ClassID)
+);
+
+CREATE TABLE Management_Attendance (
+    AttendanceID INT PRIMARY KEY,
+    ScheduleID INT,
+    AccountID INT,
+    Status VARCHAR(10) CHECK (Status IN ('Present', 'Absent')),
+    Note TEXT,
+    FOREIGN KEY (ScheduleID) REFERENCES Management_Schedule(ScheduleID),
+    FOREIGN KEY (AccountID) REFERENCES Management_Account(AccountID)
+);

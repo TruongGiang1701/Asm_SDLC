@@ -1,0 +1,130 @@
+/* Toàn bộ trang */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background-color: #f0c5b9;
+}
+
+/* Nền và khung chứa form */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.login-box {
+  background: linear-gradient(135deg, #f77062, #fe5196);
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  max-width: 350px;
+  width: 100%;
+  color: #fff;
+}
+
+/* Tiêu đề */
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+/* Nhóm các trường nhập */
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group .icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #1a1a1a;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px 10px 10px 40px;
+  font-size: 16px;
+  border: 1px solid transparent;
+  border-radius: 25px;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+  color: #333;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #fe5196;
+  box-shadow: 0 0 5px rgba(254, 81, 150, 0.5);
+}
+
+/* Nút login */
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  background-color: #1a1a1a;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #333;
+}
+
+/* Phần văn bản và biểu tượng mạng xã hội */
+p {
+  color: #1a1a1a;
+  font-size: 14px;
+}
+
+.social-icons {
+  margin: 10px 0;
+}
+
+.social-icons a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 20px;
+  margin: 0 10px;
+  display: inline-block;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #fe5196;
+}
+
+/* Link đăng ký */
+.signup-link {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.signup-link a {
+  color: #1a1a1a;
+  text-decoration: underline;
+  font-weight: bold;
+}
+.login-message {
+  color: green; /* Hoặc màu nào khác mà bạn thích */
+  font-weight: bold;
+  margin-top: 10px;
+}
